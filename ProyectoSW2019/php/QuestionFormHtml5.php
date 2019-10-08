@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <?php include '../html/Head.html'?>
+  <script src='../js/jquery-3.4.1.min.js'></script>
+</head>
+<body>
+  <?php include '../php/Menus.php' ?>
+  <section class="main" id="s1">
+    <div>
+
+      <form id="fquestion" name="fquestion" action="AddQuestionWithImage.php">
+        <fieldset>
+          <legend>DATOS DE LA PREGUNTA</legend>
+          <table style="margin-left:auto;margin-right:auto;">
+            <tr>
+              <td><label for="email">Email: </label></td>
+              <td><input type="email" name="email" id="email" autofocus required/></td>
+              <td><span id="sEmail"></span></td>
+            </tr>
+            <tr>
+              <td><label for="qst">Pregunta: </label></td>
+              <td><input type="text" name="question" id="qst" minlength="10" required/></td>
+              <td><span id="sqst"></span></td>
+            </tr>
+            <tr>
+              <td><label for="correct">Respuesta correcta: </label></td>
+              <td><input type="text" name="correcta" id="correct" required/></td>
+              <td><span id="scorrect"></span></td>
+            </tr>
+            <tr>
+              <td><label for="error1">Respuesta incorrecta 1:</label></td>
+              <td><input type="text" name="erronea1" id="error1" required/></td>
+              <td><span id="serror1"></span></td>
+            </tr>
+            <tr>
+              <td><label for="error2">Respuesta incorrecta 2:</label></td>
+              <td><input type="text" name="erronea2" id="error2" required/></td>
+              <td><span id="serror2"></span></td>
+            </tr>
+            <tr>
+              <td><label for="error3">Respuesta incorrecta 3:</label></td>
+              <td><input type="text" name="erronea3" id="error3" required/></td>
+              <td><span id="serror3"></span></td>
+            </tr>
+            <tr>
+              <td><label for="complexity">Complejidad (baja-media-alta): </label></td>
+              <td>
+                <input type="range" name="dificultad" id="complexity" min="1" max="3" value="2" required/>
+              </td>
+              <td><span id="scomplexity"></span></td>
+            </tr>
+            <tr>
+              <td><label for="topic">Tema de la pregunta:</label></td>
+              <td><input type="text" name="tema" id="topic" required/></td>
+              <td><span id="stopic"></span></td>
+            </tr>
+            <tr>
+              <td><label for="im">Imagen relacionada: </label></td>
+              <td><input type="file" name="imagen" id="im" accept="image/*"/></td>
+              <td><span id="sim"></span></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit" name="enviar" id="subm" value="Enviar datos"/></td>
+              <td colspan="1"><button type="button" name="resetear" id="reset" value="Vaciar campos">Vaciar campos</button></td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+
+
+    </div>
+  </section>
+  <?php include '../html/Footer.html' ?>
+  <script src='../js/ValidateFieldsQuestionHtml5.js'></script>
+  <script src='../js/ShowImageInForm.js'></script>
+</body>
+</html>
