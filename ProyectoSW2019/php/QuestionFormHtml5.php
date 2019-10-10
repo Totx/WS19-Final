@@ -15,8 +15,15 @@
           <table style="margin-left:auto;margin-right:auto;">
             <tr>
               <td><label for="email">Email: </label></td>
-              <td><input type="email" name="email" id="email" autofocus required/></td>
-              <td><span id="sEmail"></span></td>
+              <td><input type="email" name="email" id="email" pattern="([a-z]+\.)?[a-z]+@ehu\.(eus|es)$" autofocus required/></td>
+              <td>
+                <span id="sEmail">
+                  <select name="mailType" id="mailtype">
+                    <option value="1" selected>Profesor</option>
+                    <option value="2">Estudiante</option>
+                  </select>
+                </span>
+              </td>
             </tr>
             <tr>
               <td><label for="qst">Pregunta: </label></td>
