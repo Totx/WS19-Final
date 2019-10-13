@@ -3,15 +3,20 @@
 <head>
   <?php include '../html/Head.html'?>
   <script src='../js/jquery-3.4.1.min.js'></script>
+  <style media="screen">
+    span {
+      color: darkred;
+    }
+  </style>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
 
-      <form id="fquestion" name="fquestion" action="AddQuestionWithImage.php">
-        <fieldset>
-          <legend>DATOS DE LA PREGUNTA</legend>
+      <form method="post" id="fquestion" name="fquestion" action="AddQuestion.php">
+        <fieldset style="background-color:lightblue">
+          <legend style="background-color:white;border-style: solid; border-width: 2px">DATOS DE LA PREGUNTA</legend>
           <table style="margin-left:auto;margin-right:auto;">
             <tr>
               <td><label for="email">Email: </label></td>

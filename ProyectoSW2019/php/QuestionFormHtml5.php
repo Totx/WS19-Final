@@ -10,8 +10,8 @@
     <div>
 
       <form id="fquestion" name="fquestion" action="AddQuestionWithImage.php">
-        <fieldset>
-          <legend>DATOS DE LA PREGUNTA</legend>
+        <fieldset style="background-color:lightblue">
+          <legend style="background-color:white;border-style: solid; border-width: 2px">DATOS DE LA PREGUNTA</legend>
           <table style="margin-left:auto;margin-right:auto;">
             <tr>
               <td><label for="email">Email: </label></td>

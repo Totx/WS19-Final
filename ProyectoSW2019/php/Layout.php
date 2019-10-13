@@ -9,8 +9,7 @@
     <div>
 
       <h2>Quiz: el juego de las preguntas</h2>
-      <a href="QuestionFormWithImage.php">Ir al formulario</a>
-
+      
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
