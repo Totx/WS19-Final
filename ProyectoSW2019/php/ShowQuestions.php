@@ -17,6 +17,17 @@
       text-overflow: ellipsis;
       word-break: keep-all;
     }
+    #data td:hover{
+    white-space: normal;
+    overflow: visible;
+    position: relative;
+    }
+    #data td:hover span {
+    background-color: white;
+    border: 1px solid grey;
+    display: inline-block;
+    height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -39,15 +50,15 @@
       if ($result->num_rows > 0) {
         echo "<table id='data'><caption>Lista de preguntas</caption><thead><tr><th>Correo</th><th>Pregunta</th><th>R_correcta</th><th>R_errónea_1</th><th>R_errónea_2</th><th>R_errónea_3</th><th>Complejidad</th><th>Tema</th></tr></thead><tbody>";
         while($row = $result->fetch_assoc()) {
-          echo "<tr><td>" .
-          $row["Correo"] . "</td><td>" .
-          $row["Pregunta"] . "</td><td>" .
-          $row["Respuesta_correcta"] . "</td><td>" .
-          $row["R_Erronea_1"] . "</td><td>" .
-          $row["R_Erronea_2"] . "</td><td>" .
-          $row["R_Erronea_3"] . "</td><td>" .
-          $row["Complejidad"] . "</td><td>" .
-          $row["Tema"] . "</td></tr>";
+          echo "<tr><td><span>" .
+          $row["Correo"] . "</span></td><td><span>" .
+          $row["Pregunta"] . "</span></td><td><span>" .
+          $row["Respuesta_correcta"] . "</span></td><td><span>" .
+          $row["R_Erronea_1"] . "</span></td><td><span>" .
+          $row["R_Erronea_2"] . "</span></td><td><span>" .
+          $row["R_Erronea_3"] . "</span></td><td><span>" .
+          $row["Complejidad"] . "</span></td><td><span>" .
+          $row["Tema"] . "</span></td></tr>";
         }
         echo "</tbody></table>";
       } else {

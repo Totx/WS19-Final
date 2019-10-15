@@ -102,30 +102,20 @@
             $required[] = "El tema de la pregunta no se ha proporcionado";
           }
 
-          $targetDir = "../images/";
-          $name = pathinfo($_FILES['imagen']['name'], PATHINFO_FILENAME);
-          $fileType = pathinfo($_FILES['imagen']['name'],PATHINFO_EXTENSION);
-          $values["imagen"] = NULL;
+          //Image upload directory and extension check
+          if (!empty($_FILES['imagen']["tmp_name"])){
+            $file = $_FILES['imagen'];
+            $whitelist_type = array('image/jpeg', 'image/png','image/gif');
+            $fileinfo = finfo_open(FILEINFO_MIME_TYPE);
+            $values["imagen"] = NULL;
 
-          if(!empty($_FILES["imagen"]["name"])){
-              $allowTypes = array('jpg','png','jpeg','gif');
-              if(in_array($fileType, $allowTypes)){
-                $increment = 0;
-                 $pname = $name . '.' . $fileType;
-                 while(is_file($targetDir . $pname)) {
-                   $increment++;
-                   $pname = $name . $increment . '.' . $fileType;
-                 }
-                 $targetDir =  $targetDir . $pname;
-                  if(move_uploaded_file($_FILES["imagen"]["tmp_name"], $targetDir)){
-                    $values["imagen"] = $pname;
-                  }else{
-                  // echo $_FILES["imagen"]["tmp_name"];
-                    $required["imagen"] = "Ha ocurrido un error al subir la imagen";
-                  }
-              }else{
-                $required["imagen"] = "El formato del archivo no es aceptado";
-              }
+            if (in_array(finfo_file($fileinfo, $file['tmp_name']), $whitelist_type)) {
+              $values["imagen"] = file_get_contents($file['tmp_name']);
+            } else {
+              echo finfo_file($fileinfo, $file['tmp_name']) . "<br>";
+              $required["imagen"] = "El fichero subido no es una imagen";
+            }
+            finfo_close($fileinfo);
           }
 
           if (empty($required)){
@@ -146,11 +136,11 @@
               $sql_query->bind_param("sssssssss", $values["email"], $values["pregunta"], $values["respuesta_correcta"], $values["r_erronea_1"], $values["r_erronea_2"], $values["r_erronea_3"], $values["complejidad"], $values["tema"], $values["imagen"]);
             }
 
-            if ($result = $sql_query->execute()) {
+            if ($sql_query->execute()) {
               echo "Nueva pregunta introducida a la base de datos <br>";
               echo "<a href='ShowQuestionsWithImage.php'>Visualizar todas las preguntas</a>";
             } else {
-              echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);
+              echo "Error: " . $sql_query . "<br>" . mysqli_error($conn);
             }
 
             mysqli_close($conn);

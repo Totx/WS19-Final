@@ -14,7 +14,7 @@
   <section class="main" id="s1">
     <div>
 
-      <form method="post" id="fquestion" name="fquestion" action="AddQuestion.php">
+      <form method="post" id="fquestion" name="fquestion" action="AddQuestionWithImage.php" enctype="multipart/form-data">
         <fieldset style="background-color:lightblue">
           <legend style="background-color:white;border-style: solid; border-width: 2px">DATOS DE LA PREGUNTA</legend>
           <table style="margin-left:auto;margin-right:auto;">

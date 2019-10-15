@@ -10,7 +10,7 @@
 
       <table align="center" >
         <tr>
-          <th>
+          <th colspan=2>
             <h2>DATOS DE LOS AUTORES</h2>
           </th>
         </tr>
@@ -18,15 +18,13 @@
           <td>
             <p>Unai Lizarralde Imaz</p>
             <p>Especialidad en computación</p>
-            <img src="../images/ULizarraldeS.jpg" alt="Unai not found" style="width:25%;height:35%;">
+            <img src="../images/ULizarraldeS.jpg" alt="Unai not found" style="width:95%;height:95%;">
             <p>Correo: <a href="mailto:ulizarralde004@ikasle.ehu.eus">ulizarralde004@ikasle.ehu.eus</a></p>
           </td>
-        </tr>
-        <tr>
-          <td style="border-top: 1px solid black;">
+          <td>
             <p>Julian Nafarrate</p>
             <p>Especialidad en computación</p>
-            <img src="../images/JNafarrateS.png" alt="Julian not found" style="width:25%;height:25%;">
+            <img src="../images/JNafarrateS.png" alt="Julian not found" style="width:65%;height:65%;">
             <p>Correo: <a href="mailto:jnafarrate002@ikasle.ehu.eus">jnafarrate002@ikasle.ehu.eus</a></p>
           </td>
         </tr>
