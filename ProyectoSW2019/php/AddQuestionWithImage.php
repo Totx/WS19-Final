@@ -131,26 +131,26 @@
           if (empty($required)){
             //echo "<p>La información del formulario se ha recibido correctamente</p>";
 
-            $conn = mysqli_connect($server, $user, $pass, $basededatos);
+            $conn = mysqli_connect($server, $user, $pass, $basededatos) or die("No se puede comunicar con el servidor, la pregunta no se incluirá");
+            /*
             if (!$conn) {
-              die("Conexión fallida con la base de datos: " . mysqli_connect_error());
+              //die("Conexión fallida con la base de datos: " . mysqli_connect_error());
             }
             //echo "<p>Conexión con la base de datos establecida satisfactoriamente</p>";
+            */
 
-            $sql_query = $conn->prepare("INSERT INTO preguntas(Correo, Pregunta, Respuesta_correcta, R_Erronea_1, R_Erronea_2, R_Erronea_3, Complejidad, Tema, Imagen)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-            if (!empty($values["imagen"])) {
-              $sql_query->bind_param("sssssssss", $values["email"], $values["pregunta"], $values["respuesta_correcta"], $values["r_erronea_1"], $values["r_erronea_2"], $values["r_erronea_3"], $values["complejidad"], $values["tema"], $values["imagen"]);
+            if(!$sql_query = $conn->prepare("INSERT INTO preguntas(Correo, Pregunta, Respuesta_correcta, R_Erronea_1, R_Erronea_2, R_Erronea_3, Complejidad, Tema, Imagen)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")){
+              echo "La petición al servidor no se puede procesar";
             } else {
               $sql_query->bind_param("sssssssss", $values["email"], $values["pregunta"], $values["respuesta_correcta"], $values["r_erronea_1"], $values["r_erronea_2"], $values["r_erronea_3"], $values["complejidad"], $values["tema"], $values["imagen"]);
-            }
-
-            if ($result = $sql_query->execute()) {
-              echo "Nueva pregunta introducida a la base de datos <br>";
-              echo "<a href='ShowQuestionsWithImage.php'>Visualizar todas las preguntas</a>";
-            } else {
-              echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);
+              if ($result = $sql_query->execute()) {
+                echo "Nueva pregunta introducida a la base de datos <br>";
+                echo "<a href='ShowQuestionsWithImage.php'>Visualizar todas las preguntas</a>";
+              } else {
+                echo "No se ha podido procesar su pregunta. La información, a pesar de ser del formato correcto, no puede ser procesada por razones desconocidas. Vuelva a intentarlo otra vez mas tarde o póngase en contacto con el sistema de soporte.";
+                //echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);
+              }
             }
 
             mysqli_close($conn);
@@ -168,7 +168,10 @@
           echo "<p>El método de envio no es válido</p>";
         }
 
+
       ?>
+
+      <p><a href="QuestionFormWithImage.php">Volver a insertar una pregunta</a></p>
 
     </div>
   </section>
