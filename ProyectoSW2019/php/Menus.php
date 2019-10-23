@@ -5,7 +5,8 @@ if ($local == 1){
 } else {
   $url_path = "https://ws19g14.000webhostapp.com/ProyectoSW2019/";
 }
-$registrado = (isset($_GET["email"]) && isset($_GET["name_surname"])) ? "Registrado" : "Visitante";
+$registrado = (isset($_GET["email"])) ? "Registrado" : "Visitante";
+$parameterURL = "";
 
 ?>
 <div id='page-wrap'>
@@ -20,11 +21,25 @@ $registrado = (isset($_GET["email"]) && isset($_GET["name_surname"])) ? "Registr
   }
 
   if($registrado == "Registrado"){
-    $parameterURL = "?email=" . $_GET["email"] . "&name_surname=" . $_GET["name_surname"] . "&imagen=" . $_GET["imagen"];
+    include '../php/DbConfig.php';
+    $conn = mysqli_connect($server, $user, $pass, $basededatos) or die("No se puede comunicar con el servidor");
+    $email_val = clean_form_data(urldecode($_GET["email"]));
+    $sql_query = "SELECT * FROM usuarios WHERE Correo='" . $email_val . "'";
+    $result = $conn->query($sql_query);
+    if($result->num_rows > 0){
+      $res = $result->fetch_assoc();
+    } else {
+      echo "<script>";
+      echo 'window.location.replace("' . $url_path . 'php/Layout.php");';
+      echo "</script>";
+      exit();
+    }
+    mysqli_close($conn);
+    $parameterURL = "?email=" . $res["Correo"];
     echo "<span class='right' style='padding-right:10px'><a href='LogOut.php" . $parameterURL . "'>Logout</a></span>";
-    echo '<span class="right" style="padding-right:10px">' . clean_form_data(urldecode($_GET["email"])) . '</span>';
-    if (!empty($_GET["imagen"])){
-      $imagen = "<img src='../images/" . clean_form_data(addslashes(urldecode($_GET["imagen"]))) . "' alt='Foto de perfil' style='display:inline;max-height:100px;' />";
+    echo '<span class="right" style="padding-right:10px">' . $res["Correo"] . '</span>';
+    if (!empty($res["Imagen"])){
+      $imagen = "<img src='../images/" . $res["Imagen"] . "' alt='Foto de perfil' style='display:inline;max-height:100px;' />";
     } else {
       $imagen = "<img src='../images/anonimo.jpeg' alt='Foto de perfil' style='display:inline;max-height:100px;'/>";
     }
@@ -40,9 +55,7 @@ $registrado = (isset($_GET["email"]) && isset($_GET["name_surname"])) ? "Registr
 <nav class='main' id='n1' role='navigation'>
   <?php
 
-  $parameterURL = "";
   if ($registrado == "Registrado"){
-    $parameterURL = "?email=" . $_GET["email"] . "&name_surname=" . $_GET["name_surname"] . "&imagen=" . $_GET["imagen"];
     echo "<span><a href='Layout.php" . $parameterURL . "'>Inicio</a></span>";
     echo "<span><a href='QuestionFormWithImage.php" . $parameterURL . "'> Insertar Pregunta</a></span>";
     echo "<span><a href='ShowQuestionsWithImage.php" . $parameterURL . "' >Visualizar las preguntas</a></span>";

@@ -50,13 +50,12 @@
             if ($result = $conn->query($sql_query)){
               if ($result->num_rows > 0){
                 $row_value = $result->fetch_assoc();
-                $parameterURLLogin = "?email=" . $row_value["Correo"] . "&name_surname=" . $row_value["Nombre_Apellidos"] . "&imagen=" . $row_value["Imagen"];
+                $parameterURLLogin = "?email=" . $row_value["Correo"];
                 echo "<script>";
                 $variable_link = $url_path . 'php/Layout.php' . $parameterURLLogin;
                 $link_val = 'window.location.replace("' . $variable_link . '");';
                 echo $link_val;
                 echo "</script>";
-                echo "Por favor llega";
               } else {
                 inform();
               }

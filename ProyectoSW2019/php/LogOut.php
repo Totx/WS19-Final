@@ -16,8 +16,8 @@
 <?php
 
 echo "<script>";
-if (isset($_GET["email"]) && isset($_GET["name_surname"])){
-  $despedida = "Hasta la próxima " . clean_form_data($_GET["name_surname"]);
+if (isset($_GET["email"])){
+  $despedida = "Hasta la próxima " . $res["Nombre_Apellidos"];
   echo "alert('$despedida');";
 }
 echo 'window.location.replace("' . $url_path . 'php/Layout.php");';
