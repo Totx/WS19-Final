@@ -11,13 +11,7 @@
 			<?php
         //Definition of the mySQL connection properties are included
         include '../php/DbConfig.php';
-
-        function clean_form_data($data) {
-          $data = trim($data);
-          $data = stripslashes($data);
-          $data = htmlspecialchars($data);
-          return $data;
-        }
+        if(empty($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/Layout.php');</script>";
 
         /*
         echo $_POST['email'] . " <br>";
@@ -146,7 +140,7 @@
               $sql_query->bind_param("sssssssss", $values["email"], $values["pregunta"], $values["respuesta_correcta"], $values["r_erronea_1"], $values["r_erronea_2"], $values["r_erronea_3"], $values["complejidad"], $values["tema"], $values["imagen"]);
               if ($result = $sql_query->execute()) {
                 echo "Nueva pregunta introducida a la base de datos <br>";
-                echo "<a href='ShowQuestionsWithImage.php'>Visualizar todas las preguntas</a>";
+                echo "<a href='ShowQuestionsWithImage.php" . $parameterURL . "'>Visualizar todas las preguntas</a>";
               } else {
                 echo "No se ha podido procesar su pregunta. La información, a pesar de ser del formato correcto, no puede ser procesada por razones desconocidas. Vuelva a intentarlo otra vez mas tarde o póngase en contacto con el sistema de soporte.";
                 //echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);
@@ -171,7 +165,7 @@
 
       ?>
 
-      <p><a href="QuestionFormWithImage.php">Volver a insertar una pregunta</a></p>
+      <p><a href=<?php echo '"QuestionFormWithImage.php' . $parameterURL . '"'; ?> >Volver a insertar una pregunta</a></p>
 
     </div>
   </section>

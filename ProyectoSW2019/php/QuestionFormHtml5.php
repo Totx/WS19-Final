@@ -6,16 +6,17 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  <?php if(empty($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/Layout.php');</script>"; ?>
   <section class="main" id="s1">
     <div>
 
-      <form id="fquestion" name="fquestion" action="AddQuestionWithImage.php" enctype="multipart/form-data">
+      <form id="fquestion" name="fquestion" action=<?php echo '"AddQuestionWithImage.php' . $parameterURL . '"'; ?> enctype="multipart/form-data">
         <fieldset style="background-color:lightblue">
           <legend style="background-color:white;border-style: solid; border-width: 2px">DATOS DE LA PREGUNTA</legend>
           <table style="margin-left:auto;margin-right:auto;">
             <tr>
               <td><label for="email">Email: </label></td>
-              <td><input type="email" name="email" id="email" pattern="([a-z]+\.)?[a-z]+@ehu\.(eus|es)$" autofocus required/></td>
+              <td><input type="email" name="email" id="email" pattern="([a-z]+\.)?[a-z]+@ehu\.(eus|es)$" autofocus required value='<?php if(isset($_GET["email"])) echo clean_form_data($_GET["email"]) . '  readonly'; ?>'/></td>
               <td>
                 <span id="sEmail">
                   <select name="mailType" id="mailtype">

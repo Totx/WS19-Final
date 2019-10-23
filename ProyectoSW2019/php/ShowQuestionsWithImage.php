@@ -108,6 +108,7 @@
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
+  <?php if(empty($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/Layout.php');</script>"; ?>
   <section class="main" id="s1">
     <div>
 
@@ -161,7 +162,7 @@
       var captionText = document.getElementById("caption");
       function clickImage(imagen_src, imagen_topic){
         modal.style.display = "block";
-        var URL_image = "http://localhost/dashboard/WS19G14/ProyectoSW2019/images/" + imagen_src;
+        var URL_image = <?php echo ($local == 1) ? "'http://localhost/dashboard/WS19G14/ProyectoSW2019/images/'" : "'https://ws19g14.000webhostapp.com/ProyectoSW2019/images/'"; ?> + imagen_src;
         $("#imagen_zoom1").attr("src", URL_image);
         captionText.innerHTML = imagen_topic;
       }

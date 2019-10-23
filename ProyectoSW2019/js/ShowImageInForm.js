@@ -17,7 +17,7 @@ $("document").ready(function(){
     	}
     	reader.readAsDataURL(this.files[0]);
     } else {
-      $("#sim").html("El archivo subido no es una imagen");
+      //$("#sim").html("El archivo subido no es una imagen");
     }
   });
 })

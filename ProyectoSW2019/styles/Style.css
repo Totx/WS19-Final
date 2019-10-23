@@ -14,3 +14,4 @@ nav span             				{ margin: 0px 10px 0px 0px;
 						display: inline-block;}
 
 #ErrorMsgs          		 { color: #f61; font-size: smaler}
+.label { text-align: right;}
