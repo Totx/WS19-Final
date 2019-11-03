@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ShowXmlQuestions.xsl"?>
+<assessmentItems>
+	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
+		<itemBody>
+			<p>Tag HTML para añadir un formulario</p>
+		</itemBody>
+		<correctResponse>
+			<value>
+				FORM
+			</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value> OBJECT </value>
+			<value> TABLE </value>
+			<value> DIV </value>
+		</incorrectResponses>
+	</assessmentItem>
+		<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
+		<itemBody>
+			<p>Este protocolo acabará funcionando
+			incluso entre dos latas unidas por un cordón</p>
+		</itemBody>
+		<correctResponse>
+			<value>
+				TCP/IP
+			</value>
+		</correctResponse>
+		<incorrectResponses>
+			<value> HTTP </value>
+			<value> SMTP </value>
+			<value> Ninguna es correcta </value>
+		</incorrectResponses>
+	</assessmentItem>
+<assessmentItem subject="Prueba en la nube" author="ulizarralde004@ikasle.ehu.eus"><itemBody><p>¿Funciona bien la base de datos en la nube?</p></itemBody><correctResponse><value>Quiero creer que lo hará</value></correctResponse><incorrectResponses><value>No</value><value>Todo reside en la confianza que se tiene</value><value>Cuanto antes lo prueba mejor va a ser</value></incorrectResponses></assessmentItem><assessmentItem subject="Prueba en la nube" author="ulizarralde004@ikasle.ehu.eus"><itemBody><p>¿Funciona bien la base de datos en la nube?</p></itemBody><correctResponse><value>Quiero creer que lo hará</value></correctResponse><incorrectResponses><value>No</value><value>Todo reside en la confianza que se tiene</value><value>Cuanto antes lo prueba mejor va a ser</value></incorrectResponses></assessmentItem></assessmentItems>

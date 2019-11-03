@@ -82,7 +82,7 @@
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
-  <!--<script src='../js/ValidateFieldsQuestion.js'></script>-->
+  <script src='../js/ValidateFieldsQuestion.js'></script>
   <script src='../js/ShowImageInForm.js'></script>
 </body>
 </html>

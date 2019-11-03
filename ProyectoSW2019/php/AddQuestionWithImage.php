@@ -125,6 +125,8 @@
           if (empty($required)){
             //echo "<p>La información del formulario se ha recibido correctamente</p>";
 
+            // Insert the question in the database
+
             $conn = mysqli_connect($server, $user, $pass, $basededatos) or die("No se puede comunicar con el servidor, la pregunta no se incluirá");
             /*
             if (!$conn) {
@@ -140,7 +142,7 @@
               $sql_query->bind_param("sssssssss", $values["email"], $values["pregunta"], $values["respuesta_correcta"], $values["r_erronea_1"], $values["r_erronea_2"], $values["r_erronea_3"], $values["complejidad"], $values["tema"], $values["imagen"]);
               if ($result = $sql_query->execute()) {
                 echo "Nueva pregunta introducida a la base de datos <br>";
-                echo "<a href='ShowQuestionsWithImage.php" . $parameterURL . "'>Visualizar todas las preguntas</a>";
+                echo "<a href='ShowQuestionsWithImage.php" . $parameterURL . "'>Visualizar todas las preguntas en la BD</a>";
               } else {
                 echo "No se ha podido procesar su pregunta. La información, a pesar de ser del formato correcto, no puede ser procesada por razones desconocidas. Vuelva a intentarlo otra vez mas tarde o póngase en contacto con el sistema de soporte.";
                 //echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);
@@ -148,6 +150,32 @@
             }
 
             mysqli_close($conn);
+
+            // Insert the question in the XML file
+            $directory = "../xml/Questions.xml";
+            $xml=simplexml_load_file($directory) or die("<p>El fichero XML no esta accesible</p>");
+            $question_form = $xml->addChild("assessmentItem");
+            // Atributos tema y autor
+            $question_form->addAttribute("subject", $values["tema"]);
+            $question_form->addAttribute("author", $values["email"]);
+            // Pregunta
+            $pregunta = $question_form->addChild("itemBody");
+            $pregunta->addChild("p", $values["pregunta"]);
+            // Respuesta correcta
+            $respuesta_correcta = $question_form->addChild("correctResponse");
+            $respuesta_correcta->addChild("value", $values["respuesta_correcta"]);
+            // Respuestas incorrectas
+            $respuestas_incorrectas = $question_form->addChild("incorrectResponses");
+            $respuestas_incorrectas->addChild("value", $values["r_erronea_1"]);
+            $respuestas_incorrectas->addChild("value", $values["r_erronea_2"]);
+            $respuestas_incorrectas->addChild("value", $values["r_erronea_3"]);
+            // Update the xml file
+            if ($xml->asXML($directory)){
+              echo "<br><a href='ShowXmlQuestions.php" . $parameterURL . "'>Visualizar todas las preguntas del fichero XML</a>";
+            } else {
+              echo "<p>No se ha podido introducir la pregunta en el fichero XML</p>";
+            }
+
 
           } else {
             echo "<h2>El formulario contiene los siguientes errores de formato: </h2>";
