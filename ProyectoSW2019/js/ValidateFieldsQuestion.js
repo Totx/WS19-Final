@@ -128,7 +128,7 @@ $("document").ready(function(){
   });
 
   $("#reset").click(function(){
-    $("#email").val("");
+    //$("#email").val("");
     $("#qst").val("");
     $("#correct").val("");
     $("#error1").val("");

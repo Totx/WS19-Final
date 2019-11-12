@@ -59,7 +59,7 @@ $parameterURL = "";
 
   if ($registrado == "Registrado"){
     echo "<span><a href='Layout.php" . $parameterURL . "'>Inicio</a></span>";
-    echo "<span><a href='QuestionFormWithImage.php" . $parameterURL . "'> Insertar Pregunta</a></span>";
+    echo "<span><a href='QuestionFormWithImageHTML5.php" . $parameterURL . "'> Insertar Pregunta</a></span>";
     echo "<span><a href='ShowQuestionsWithImage.php" . $parameterURL . "' >Visualizar las preguntas DB</a></span>";
     echo "<span><a href='ShowXmlQuestions.php" . $parameterURL . "' >Ver preguntas XML</a></span>";
     echo "<span><a href='Credits.php" . $parameterURL . "'>Creditos</a></span>";

@@ -1,4 +1,4 @@
-
+/*
 function isImage(file){
    return file['type'].split('/')[0]=='image';
  }
@@ -14,15 +14,12 @@ function validate(){
   }
 
   return isValid;
-}
+}*/
 
 $("document").ready(function(){
-  $("#fquestion").submit(function(){
-    return validate();
-  });
 
   $("#reset").click(function(){
-    $("#email").val("");
+    //$("#email").val("");
     $("#qst").val("");
     $("#correct").val("");
     $("#error1").val("");
@@ -34,6 +31,7 @@ $("document").ready(function(){
     $("#sim").html("");
   })
 
+/*
   $("#mailtype").change(function(){
     var expAlumnos = "^[a-z]{2,}[0-9]{3}@ikasle\\.ehu\\.(eus|es)$";
     var expProfesores = "([a-z]+\\.)?[a-z]+@ehu\\.(eus|es)$";
@@ -44,5 +42,5 @@ $("document").ready(function(){
     }
   })
 
-  $("#mailtype").val(1);
+  $("#mailtype").val(1);*/
 })

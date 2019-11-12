@@ -192,11 +192,16 @@
 
 
       ?>
-
-      <p><a href=<?php echo '"QuestionFormWithImage.php' . $parameterURL . '"'; ?> >Volver a insertar una pregunta</a></p>
+      <br>
+      <button onclick="returnPage()">Volver a insertar una pregunta</button>
 
     </div>
   </section>
+  <script type="text/javascript">
+    function returnPage(){
+      window.history.back();
+    }
+  </script>
   <?php include '../html/Footer.html' ?>
 </body>
 </html>

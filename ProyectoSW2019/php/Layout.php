@@ -9,7 +9,8 @@
     <div>
 
       <h2>Quiz: el juego de las preguntas</h2>
-      
+      <img style="align:center" src="../images/quiz-logo.jpg" alt="Quiz">
+
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
