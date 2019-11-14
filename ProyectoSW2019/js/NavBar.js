@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+function navbar(){
   $('#data').after('<div id="nav"></div>');
   var rowsShown = 8;
   var rowsTotal = $('#data tbody tr').length;
@@ -20,4 +20,8 @@ $(document).ready(function(){
       $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
               css('display','table-row').animate({opacity:1}, 300);
   });
+}
+
+$(document).ready(function(){
+  navbar();
 });

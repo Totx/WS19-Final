@@ -28,7 +28,7 @@ $("document").ready(function(){
     $("#complexity").val("");
     $("#topic").val("");
     $("#im").val("");
-    $("#sim").html("");
+    $("#sim").html("");   
   })
 
 /*

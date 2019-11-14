@@ -51,6 +51,7 @@
               if ($result->num_rows > 0){
                 $row_value = $result->fetch_assoc();
                 $parameterURLLogin = "?email=" . $row_value["Correo"];
+                include 'IncreaseGlobalCounter.php';
                 echo "<script>";
                 $variable_link = $url_path . 'php/Layout.php' . $parameterURLLogin;
                 $link_val = 'window.location.replace("' . $variable_link . '");';

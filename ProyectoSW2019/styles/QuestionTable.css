@@ -1,14 +1,18 @@
 /* Question display table */
-table, th, td {
+#data {
 	border: 1px solid grey;
 	border-collapse: collapse;
-}
-#data {
 	table-layout: fixed;
 	width: 100%;
 	background-color: white;
 }
+#data th {
+	border: 1px solid grey;
+	border-collapse: collapse;
+}
 #data td {
+	border: 1px solid grey;
+	border-collapse: collapse;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: keep-all;

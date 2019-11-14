@@ -2,6 +2,9 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
+  <link rel="stylesheet" type='text/css' href="../styles/FormTable.css">
+  <link rel="stylesheet" type='text/css' href="../styles/UpdateBar.css">
+  <link rel="stylesheet" type='text/css' href="../styles/QuestionTable.css">
   <script src='../js/jquery-3.4.1.min.js'></script>
 </head>
 <body>
@@ -10,7 +13,11 @@
   <section class="main" id="s1">
     <div>
 
-      <form method="post" id="fquestion" name="fquestion" action=<?php echo '"AddQuestionWithImage.php' . $parameterURL . '"'; ?> enctype="multipart/form-data">
+      <div class="userQ" name="conUsers" id="connUsers" style="border-style: double;"></div>
+
+      <div class="userQ" name="userTotal" id="usertotal" style="border-style: double;"></div>
+
+      <form method="post" id="fquestion" name="fquestion" action=<?php echo '"AddQuestionWithAjax.php' . $parameterURL . '"'; ?> enctype="multipart/form-data">
         <fieldset style="background-color:lightblue">
           <legend style="background-color:white;border-style: solid; border-width: 2px">DATOS DE LA PREGUNTA</legend>
           <table class="fquest" style="margin-left:auto;margin-right:auto;">
@@ -54,24 +61,23 @@
               <td class="label"><label for="sim">Previsualización: </label></td>
               <td class="input"><span id="sim" class="imPrev"></span></td>
             </tr>
-            <tr>
-              <td colspan="2"><button type="submit" name="enviar" id="subm" value="Enviar datos"/>Insertar pregunta</button></td>
-              <td colspan="1"><button type="button" name="resetear" id="reset" value="Vaciar campos">Vaciar campos</button></td>
-            </tr>
           </table>
         </fieldset>
       </form>
+      <span style="font-weight:bold">Barra de progreso de la petición para insertar pregunta</span>
+      <div id="upload-progress"><div class="progress-bar"></div></div> <!-- Progress bar added -->
 
       <div class="buttons">
         <button type="button" name="preguntas" id="watchQ">Ver preguntas</button>
+        <button type="button" name="enviar" id="subm" value="Enviar datos"/>Insertar pregunta</button>
+        <button type="button" name="resetear" id="reset" value="Vaciar campos">Vaciar campos</button>
       </div>
 
-      <div class="resp" name="respuesta" id="response">
-      </div>
+      <!-- Recoger la respuesta del servidor al insertar una imagen -->
+      <div class="resp" name="respuesta" id="response"></div>
 
-      <div class="">
-
-      </div>
+      <!-- Ver las preguntas almacenadas en el fichero xml -->
+      <div class="visual" name="visualization" id="visl"></div>
 
 
 
@@ -79,7 +85,12 @@
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
-  <script src='../js/ValidateFieldsQuestionHtml5.js'></script>
+  <script src='../js/ClearForm.js'></script>
   <script src='../js/ShowImageInForm.js'></script>
+  <script src='../js/AddQuestionsAjax.js'></script>
+  <script src='../js/ShowQuestionsAjax.js'></script>
+  <script src='../js/NavBar.js'></script>
+  <script src='../js/CountQuestionsAjax.js'></script>
+  <script src='../js/RefreshLoginCounter.js'></script>
 </body>
 </html>

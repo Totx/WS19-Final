@@ -13,7 +13,8 @@ $parameterURL = "";
 ?>
 <div id='page-wrap'>
 <header class='main' id='h1'>
-  <?php
+
+<?php
 
   function clean_form_data($data) {
     $data = trim($data);
@@ -59,9 +60,7 @@ $parameterURL = "";
 
   if ($registrado == "Registrado"){
     echo "<span><a href='Layout.php" . $parameterURL . "'>Inicio</a></span>";
-    echo "<span><a href='QuestionFormWithImageHTML5.php" . $parameterURL . "'> Insertar Pregunta</a></span>";
-    echo "<span><a href='ShowQuestionsWithImage.php" . $parameterURL . "' >Visualizar las preguntas DB</a></span>";
-    echo "<span><a href='ShowXmlQuestions.php" . $parameterURL . "' >Ver preguntas XML</a></span>";
+    echo "<span><a href='HandlingQuizesAjax.php" . $parameterURL . "'>Gestionar Preguntas</a></span>";
     echo "<span><a href='Credits.php" . $parameterURL . "'>Creditos</a></span>";
   } else {
     echo "<span><a href='Layout.php'>Inicio</a></span>";

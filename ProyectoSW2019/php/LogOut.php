@@ -15,6 +15,8 @@
 </html>
 <?php
 
+include 'DecreaseGlobalCounter.php';
+
 echo "<script>";
 if (isset($_GET["email"])){
   $despedida = "Hasta la próxima " . $res["Nombre_Apellidos"];
