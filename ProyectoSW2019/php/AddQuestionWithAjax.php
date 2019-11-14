@@ -27,7 +27,7 @@
         $values = array(); // Almacena los valor de cada campo del formulario si este es corrento
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-          if (!empty($_POST["email"])){
+          if (!empty($_POST["email"]) && !empty(clean_form_data($_POST['email']))){
             $email = clean_form_data($_POST["email"]);
             $expAlumnos = "/^[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es)$/";
             $expProfesores = "/([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/";
@@ -40,7 +40,7 @@
             $required[] = "Correo no proporcionado";
           }
 
-          if (!empty($_POST["question"])) {
+          if (!empty($_POST["question"]) && !empty(clean_form_data($_POST['question']))) {
             $question = clean_form_data($_POST["question"]);
             if (strlen($question) >= 10){
               $values["pregunta"] = $question;
@@ -51,31 +51,31 @@
             $required[] = "No se ha incluido una pregunta";
           }
 
-          if (!empty($_POST["correcta"])) {
+          if (!empty($_POST["correcta"]) && !empty(clean_form_data($_POST['correcta']))) {
             $values["respuesta_correcta"] = clean_form_data($_POST["correcta"]);
           } else {
             $required[] = "La respuesa correcta no se ha proporcionado";
           }
 
-          if (!empty($_POST["erronea1"])) {
+          if (!empty($_POST["erronea1"])  && !empty(clean_form_data($_POST['erronea1']))) {
             $values["r_erronea_1"] = clean_form_data($_POST["erronea1"]);
           } else {
             $required[] = "La primera respuesta errónea no se ha proporcionado";
           }
 
-          if (!empty($_POST["erronea2"])) {
+          if (!empty($_POST["erronea2"])  && !empty(clean_form_data($_POST['erronea2']))) {
             $values["r_erronea_2"] = clean_form_data($_POST["erronea2"]);
           } else {
             $required[] = "La segunda respuesta errónea no se ha proporcionado";
           }
 
-          if (!empty($_POST["erronea3"])) {
+          if (!empty($_POST["erronea3"]) && !empty(clean_form_data($_POST['erronea3']))) {
             $values["r_erronea_3"] = clean_form_data($_POST["erronea3"]);
           } else {
             $required[] = "La tercera respuesta errónea no se ha proporcionado";
           }
 
-          if (!empty($_POST["dificultad"])) {
+          if (!empty($_POST["dificultad"])  && !empty(clean_form_data($_POST['dificultad']))) {
             $dificultad = clean_form_data($_POST["dificultad"]);
             if ($dificultad == 1) {
               $values["complejidad"] = "Baja";
@@ -90,7 +90,7 @@
             $required[] = "No se ha establecido un nivel de complejidad para la pregunta";
           }
 
-          if (!empty($_POST["tema"])) {
+          if (!empty($_POST["tema"])  && !empty(clean_form_data($_POST['tema']))) {
             $values["tema"] = clean_form_data($_POST["tema"]);
           } else {
             $required[] = "El tema de la pregunta no se ha proporcionado";
