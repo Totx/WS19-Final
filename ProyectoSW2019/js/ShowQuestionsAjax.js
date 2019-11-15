@@ -25,11 +25,11 @@ function retrieveXML(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       //alert(this.responseText);
-      $("#visl").html(generateTable(this.responseText));
+      $("#visl").html(this.responseText);
       navbar();
     }
   };
-  xhttp.open("GET", "../xml/Questions.xml", true);
+  xhttp.open("GET", "../php/ShowQuestionsAjax.php", true);
   xhttp.setRequestHeader('Cache-Control', 'no-cache');
   xhttp.send();
 }
