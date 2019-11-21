@@ -1,12 +1,5 @@
 <?php
-// Warning suppression
-error_reporting(E_ERROR | E_PARSE);
-$local = 1;
-if ($local == 1){
-  $url_path = "http://localhost/dashboard/WS19G14/ProyectoSW2019/";
-} else {
-  $url_path = "https://ws19g14.000webhostapp.com/ProyectoSW2019/";
-}
+include '../php/URLPath.php';
 $registrado = (isset($_GET["email"])) ? "Registrado" : "Visitante";
 $parameterURL = "";
 
@@ -61,6 +54,7 @@ $parameterURL = "";
   if ($registrado == "Registrado"){
     echo "<span><a href='Layout.php" . $parameterURL . "'>Inicio</a></span>";
     echo "<span><a href='HandlingQuizesAjax.php" . $parameterURL . "'>Gestionar Preguntas</a></span>";
+    echo "<span><a href='ObtenerPregunta.php" . $parameterURL . "'>Obtener pregunta</a></span>";
     echo "<span><a href='Credits.php" . $parameterURL . "'>Creditos</a></span>";
   } else {
     echo "<span><a href='Layout.php'>Inicio</a></span>";

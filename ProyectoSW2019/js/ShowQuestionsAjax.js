@@ -37,6 +37,8 @@ function retrieveXML(){
 $("document").ready(function(){
 
   $("#watchQ").click(function(){
+    $("#imvsl").html("");
+    $("#imTable").html("");
     retrieveXML();
   });
 

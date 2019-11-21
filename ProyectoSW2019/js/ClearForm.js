@@ -14,6 +14,7 @@ $("document").ready(function(){
     $("#sim").html("");
     $("#response").html("");
     $("#visl").html("");
-  })
+    $("#imvsl").html("");
+  });
 
 });

@@ -16,7 +16,12 @@
       } else {
         $ocupation = clean_form_data($_POST["ocupacion"]);
         if (($ocupation == "profesor" && preg_match("/([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email)) || ($ocupation == "estudiante" && preg_match("/^[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es)$/", $email))){
-          $values["correo"] = $email;
+          include '../php/ClientVerifyEnrollment.php';
+          if ($result == "NO"){
+            $required["semail"] = "No es un correo de un estudiante VIP, no puede registrarse";
+          } else {
+            $values["correo"] = $email;
+          }
         } else {
           $required["semail"] = "El formato del correo no es adecuado para ocupación elegida";
         }
@@ -41,7 +46,14 @@
       if (!filter_var($pass, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[\w\s]{6,}$/")))){
         $required["spass"] = "La longitud de la contraseña debe tener 6 carácteres alfanuméricos al menos";
       } else {
-        $values["password"] = $pass;
+        include 'ClientVerifyPass.php';
+        if($result_pass == "INVALIDA"){
+          $required["spass"]  = "No es un password válido";
+        } else if ($result_pass == "VALIDA"){
+          $values["password"] = $pass;
+        } else {
+          $required["spass"] = "Fuera de servicio";
+        }
       }
     }
 

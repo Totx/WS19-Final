@@ -39,7 +39,7 @@
             </tr>
             <tr>
               <td class="label"><label for="email">Correo:</label></td>
-              <td class="tdInput"><input type="text" class="sInput" id="email" name="correo" value="<?php echo isset($_POST['correo']) ? clean_form_data($_POST['correo']) : '' ?>"/></td>
+              <td class="tdInput"><input type="text" class="sInput" id="email" name="correo" value="<?php echo isset($_POST['correo']) ? clean_form_data($_POST['correo']) : '' ?>"/><br><span id="emailWService"></span></td>
               <td><span class="spanSingUp" id="semail"><?php if(!empty($required["semail"])) echo $required["semail"]; ?></span></td>
             </tr>
             <tr>
@@ -49,7 +49,7 @@
             </tr>
             <tr>
               <td class="label"><label for="pass">Password:</label></td>
-              <td class="tdInput"><input type="password" class="sInput" name="password" id="pass"/><br><input type="checkbox" id="cpass1"/>Mostrar password</td>
+              <td class="tdInput"><input type="password" class="sInput" name="password" id="pass"/><br><input type="checkbox" id="cpass1"/>Mostrar password<br><span id="passWService"></span></td>
               <td><span class="spanSingUp" id="spass"><?php if(!empty($required["spass"])) echo $required["spass"]; ?></span></td>
             </tr>
             <tr>
@@ -80,5 +80,6 @@
   <?php include '../html/Footer.html' ?>
   <script src='../js/ShowPassword.js'></script>
   <script src='../js/ShowImageInForm.js'></script>
+  <script src='../js/WebServiceSignUp.js'></script>
 </body>
 </html>

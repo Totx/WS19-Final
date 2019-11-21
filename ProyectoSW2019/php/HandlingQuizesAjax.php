@@ -5,6 +5,7 @@
   <link rel="stylesheet" type='text/css' href="../styles/FormTable.css">
   <link rel="stylesheet" type='text/css' href="../styles/UpdateBar.css">
   <link rel="stylesheet" type='text/css' href="../styles/QuestionTable.css">
+  <link rel="stylesheet" type='text/css' href="../styles/ZoomImage.css">
   <script src='../js/jquery-3.4.1.min.js'></script>
 </head>
 <body>
@@ -71,6 +72,7 @@
         <button type="button" name="preguntas" id="watchQ">Ver preguntas</button>
         <button type="button" name="enviar" id="subm" value="Enviar datos"/>Insertar pregunta</button>
         <button type="button" name="resetear" id="reset" value="Vaciar campos">Vaciar campos</button>
+        <button type="button" name="buscar" id="lim" value="Buscar imagen">Buscar imagen</button>
       </div>
 
       <!-- Recoger la respuesta del servidor al insertar una imagen -->
@@ -79,8 +81,15 @@
       <!-- Ver las preguntas almacenadas en el fichero xml -->
       <div class="visual" name="visualization" id="visl"></div>
 
+      <div class="imagenes" name="imvisual" id="imvsl"></div>
 
+      <div class="tablaIm" name="imagetable" id="imTable"></div>
 
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imagen_zoom1" src=''>
+        <div id="caption"></div>
+      </div>
 
     </div>
   </section>
@@ -92,5 +101,7 @@
   <script src='../js/NavBar.js'></script>
   <script src='../js/CountQuestionsAjax.js'></script>
   <script src='../js/RefreshLoginCounter.js'></script>
+  <script src='../js/SearchImagesWS.js'></script>
+  <script src='../js/ZoomImage.js'></script>
 </body>
 </html>
