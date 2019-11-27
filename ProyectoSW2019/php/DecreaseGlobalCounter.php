@@ -1,7 +1,5 @@
-
 <?php
 
-include '../php/SessionStart.php';
 if (!(isset($_SESSION["email"]) && isset($_SESSION["nombre"]) && isset($_SESSION['role']))){
   header('Location: ../php/Layout.php');
 }

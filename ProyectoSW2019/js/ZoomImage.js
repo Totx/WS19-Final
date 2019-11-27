@@ -4,8 +4,13 @@ var captionText = document.getElementById("caption");
 
 function clickImage(imagen_src, imagen_topic){
   modal.style.display = "block";
-  // URL_image_directory must be specified as a global variable
-  var URL_image = URL_image_directory + imagen_src;
+  var local = true;
+  var URL_image;
+  if (local){
+    URL_image = 'http://localhost/dashboard/WS19G14/ProyectoSW2019/images/' + imagen_src;
+  } else {
+    URL_image = 'https://ws19g14.000webhostapp.com/ProyectoSW2019/images/' + imagen_src;
+  }
   $("#imagen_zoom1").attr("src", URL_image);
   captionText.innerHTML = imagen_topic;
 }

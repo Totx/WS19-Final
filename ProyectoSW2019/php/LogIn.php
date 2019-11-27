@@ -41,7 +41,7 @@
               header('Location: ../php/Layout.php');
             }
           } else {
-            inform('Ha ocurrido un error: Los datos son incorrectos PASSWORD');
+            inform('Ha ocurrido un error: Los datos son incorrectos');
           }
         } else {
           inform('Ha ocurrido un error: Los datos son incorrectos');
