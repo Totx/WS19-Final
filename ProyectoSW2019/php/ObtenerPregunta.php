@@ -1,3 +1,12 @@
+<?php
+
+include '../php/SessionStart.php';
+if (!(isset($_SESSION["email"]) && isset($_SESSION["nombre"]) && isset($_SESSION['role']) && ($_SESSION['role'] == 2 || $_SESSION['role'] == 3))){
+  header('Location: ../php/Layout.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +17,6 @@
 </head>
 <body>
   <?php include '../php/Menus.php'?>
-  <?php if(empty($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/Layout.php');</script>"; ?>
   <section class="main" id="s1">
     <div>
 
@@ -16,7 +24,7 @@
 
       <div class="userQ" name="userTotal" id="usertotal" style="border-style: double;"></div>
 
-      <form method="post" id="fquestion" name="fquestion" action=<?php echo '"ClientGetQuestion.php' . $parameterURL . '"'; ?>>
+      <form method="post" id="fquestion" name="fquestion" action=<?php echo '"ClientGetQuestion.php"'; ?>>
         <fieldset style="background-color:lightblue">
           <legend style="background-color:white;border-style: solid; border-width: 2px">PETICION DE LA PREGUNTA</legend>
           <table class="fquest" style="margin-left:auto;margin-right:auto;">

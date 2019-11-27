@@ -1,7 +1,10 @@
 <?php
 include '../php/URLPath.php';
-$registrado = (isset($_GET["email"])) ? "Registrado" : "Visitante";
-$parameterURL = "";
+$registrado = (isset($_SESSION["email"]) && isset($_SESSION["nombre"]) && isset($_SESSION['role'])) ? "Registrado" : "Visitante";
+$admin = false;
+if ($registrado == "Registrado" && $_SESSION['role']==1){
+  $admin = true;
+}
 
 ?>
 <div id='page-wrap'>
@@ -17,25 +20,10 @@ $parameterURL = "";
   }
 
   if($registrado == "Registrado"){
-    include '../php/DbConfig.php';
-    $conn = mysqli_connect($server, $user, $pass, $basededatos) or die("No se puede comunicar con el servidor");
-    $email_val = clean_form_data(urldecode($_GET["email"]));
-    $sql_query = "SELECT * FROM usuarios WHERE Correo='" . $email_val . "'";
-    $result = $conn->query($sql_query);
-    if($result->num_rows > 0){
-      $res = $result->fetch_assoc();
-    } else {
-      echo "<script>";
-      echo 'window.location.replace("' . $url_path . 'php/Layout.php");';
-      echo "</script>";
-      exit();
-    }
-    mysqli_close($conn);
-    $parameterURL = "?email=" . $res["Correo"];
-    echo "<span class='right' style='padding-right:10px'><a href='LogOut.php" . $parameterURL . "'>Logout</a></span>";
-    echo '<span class="right" style="padding-right:10px">' . $res["Correo"] . '</span>';
-    if (!empty($res["Imagen"])){
-      $imagen = "<img src='../images/" . $res["Imagen"] . "' alt='Foto de perfil' style='display:inline;max-height:100px;' />";
+    echo "<span class='right' style='padding-right:10px'><a href='LogOut.php'>Logout</a></span>";
+    echo '<span class="right" style="padding-right:10px">' . $_SESSION["email"] . '</span>';
+    if (!empty($_SESSION["image"])){
+      $imagen = "<img src='../images/" . $_SESSION["image"] . "' alt='Foto de perfil' style='display:inline;max-height:100px;' />";
     } else {
       $imagen = "<img src='../images/anonimo.jpeg' alt='Foto de perfil' style='display:inline;max-height:100px;'/>";
     }
@@ -51,15 +39,15 @@ $parameterURL = "";
 <nav class='main' id='n1' role='navigation'>
   <?php
 
-  if ($registrado == "Registrado"){
-    echo "<span><a href='Layout.php" . $parameterURL . "'>Inicio</a></span>";
-    echo "<span><a href='HandlingQuizesAjax.php" . $parameterURL . "'>Gestionar Preguntas</a></span>";
-    echo "<span><a href='ObtenerPregunta.php" . $parameterURL . "'>Obtener pregunta</a></span>";
-    echo "<span><a href='Credits.php" . $parameterURL . "'>Creditos</a></span>";
-  } else {
-    echo "<span><a href='Layout.php'>Inicio</a></span>";
-    echo "<span><a href='Credits.php'>Creditos</a></span>";
+  echo "<span><a href='Layout.php'>Inicio</a></span>";
+  if ($registrado == "Registrado" && !$admin){
+    echo "<span><a href='HandlingQuizesAjax.php'>Gestionar Preguntas</a></span>";
+    echo "<span><a href='ObtenerPregunta.php'>Obtener pregunta</a></span>";
+  } else if ($registrado == "Registrado" && $admin){
+    echo "<span><a href='HandlingAccounts.php'>Gestionar usuarios</a></span>";
   }
+  echo "<span><a href='Credits.php'>Creditos</a></span>";
+
 
   ?>
 </nav>

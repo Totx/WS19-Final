@@ -1,3 +1,9 @@
+<?php
+include '../php/SessionStart.php';
+if(isset($_SESSION['email'])){
+  header('Location: ../php/Layout.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

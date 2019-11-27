@@ -1,3 +1,6 @@
+<?php
+  include '../php/SessionStart.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>

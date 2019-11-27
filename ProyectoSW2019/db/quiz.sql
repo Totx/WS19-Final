@@ -2,10 +2,10 @@
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2019 a las 23:20:36
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.2.24
+-- Servidor: localhost:3306
+-- Tiempo de generación: 27-11-2019 a las 11:39:06
+-- Versión del servidor: 10.3.16-MariaDB
+-- Versión de PHP: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `quiz`
+-- Base de datos: `id11159112_quiz`
 --
 
 -- --------------------------------------------------------
@@ -51,7 +51,9 @@ CREATE TABLE `usuarios` (
   `Correo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Nombre_Apellidos` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Contrasena` text COLLATE utf8_unicode_ci NOT NULL,
-  `Imagen` text COLLATE utf8_unicode_ci DEFAULT NULL
+  `Imagen` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Rol` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

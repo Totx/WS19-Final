@@ -142,7 +142,7 @@
               $sql_query->bind_param("sssssssss", $values["email"], $values["pregunta"], $values["respuesta_correcta"], $values["r_erronea_1"], $values["r_erronea_2"], $values["r_erronea_3"], $values["complejidad"], $values["tema"], $values["imagen"]);
               if ($result = $sql_query->execute()) {
                 echo "Nueva pregunta introducida a la base de datos <br>";
-                //echo "<a href='ShowQuestionsWithImage.php" . $parameterURL . "'>Visualizar todas las preguntas en la BD</a>";
+                //echo "<a href='ShowQuestionsWithImage.php'>Visualizar todas las preguntas en la BD</a>";
               } else {
                 echo "No se ha podido procesar su pregunta. La información, a pesar de ser del formato correcto, no puede ser procesada por razones desconocidas. Vuelva a intentarlo otra vez mas tarde o póngase en contacto con el sistema de soporte.";
                 //echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);
@@ -172,7 +172,7 @@
             // Update the xml file
             if ($xml->asXML($directory)){
               echo "Nueva pregunta introducida en el fichero XML<br>";
-              //echo "<br><a href='ShowXmlQuestions.php" . $parameterURL . "'>Visualizar todas las preguntas del fichero XML</a>";
+              //echo "<br><a href='ShowXmlQuestions.php'>Visualizar todas las preguntas del fichero XML</a>";
             } else {
               echo "<p>No se ha podido introducir la pregunta en el fichero XML</p>";
             }

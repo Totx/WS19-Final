@@ -1,7 +1,5 @@
 <?php
 
-  if (isset($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/SignUp.php');</script>";
-
   $required = array();
   $values = array();
 
@@ -16,6 +14,11 @@
       } else {
         $ocupation = clean_form_data($_POST["ocupacion"]);
         if (($ocupation == "profesor" && preg_match("/([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email)) || ($ocupation == "estudiante" && preg_match("/^[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es)$/", $email))){
+          if ($ocupation == "profesor"){
+            $values["ocupation"] = 2;
+          } else {
+            $values["ocupation"] = 3;
+          }
           include '../php/ClientVerifyEnrollment.php';
           if ($result == "NO"){
             $required["semail"] = "No es un correo de un estudiante VIP, no puede registrarse";
@@ -102,13 +105,14 @@
       //Every field was correctly filled
       include '../php/DbConfig.php';
       $conn = mysqli_connect($server, $user, $pass, $basededatos) or die("No se puede comunicar con el servidor");
-      if(!$sql_query = $conn->prepare("INSERT INTO usuarios(Correo, Nombre_Apellidos, Contrasena, Imagen) VALUES (?, ?, ?, ?)")){
+      if(!$sql_query = $conn->prepare("INSERT INTO usuarios(Correo, Nombre_Apellidos, Contrasena, Imagen, Rol, Estado) VALUES (?, ?, ?, ?, ?, ?)")){
         echo "La petición al servidor no se puede procesar";
       } else {
-        $sql_query->bind_param("ssss", $values["correo"], $values["name_surname"], $values["password"], $values["imagen"]);
+        $estadoUser = 1;
+        $sql_query->bind_param("ssssii", $values["correo"], $values["name_surname"], password_hash($values["password"], PASSWORD_DEFAULT), $values["imagen"], $values["ocupation"], $estadoUser);
         if ($result = $sql_query->execute()) {
           $welcome = "Bienvenido seas a la comunidad " . $values["name_surname"];
-          echo "<script type='text/javascript'> alert('$welcome');window.location.href='" . $url_path . "php/LogIn.php" . $parameterURL . "';</script>";
+          echo "<script type='text/javascript'> alert('$welcome');window.location.href='" . $url_path . "php/LogIn.php';</script>";
         } else {
           echo "<p>El servidor ha tenido problemas al procesar su registro. Probablemente se deba a que ya existe un usuario registrado con el mismo correo.</p>";
           //echo "Error: No se ha podido realizar la insercón de los datos<br>" . mysqli_error($conn);

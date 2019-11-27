@@ -1,3 +1,12 @@
+<?php
+
+include '../php/SessionStart.php';
+if (!(isset($_SESSION["email"]) && isset($_SESSION["nombre"]) && isset($_SESSION['role']) && ($_SESSION['role'] == 2 || $_SESSION['role'] == 3))){
+  header('Location: ../php/Layout.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +19,6 @@
 </head>
 <body>
   <?php include '../php/Menus.php'?>
-  <?php if(empty($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/Layout.php');</script>"; ?>
   <section class="main" id="s1">
     <div>
 
@@ -18,13 +26,13 @@
 
       <div class="userQ" name="userTotal" id="usertotal" style="border-style: double;"></div>
 
-      <form method="post" id="fquestion" name="fquestion" action=<?php echo '"AddQuestionWithAjax.php' . $parameterURL . '"'; ?> enctype="multipart/form-data">
+      <form method="post" id="fquestion" name="fquestion" action=<?php echo '"AddQuestionWithAjax.php"'; ?> enctype="multipart/form-data">
         <fieldset style="background-color:lightblue">
           <legend style="background-color:white;border-style: solid; border-width: 2px">DATOS DE LA PREGUNTA</legend>
           <table class="fquest" style="margin-left:auto;margin-right:auto;">
             <tr>
               <td class="label"><label for="email">Email: </label></td>
-              <td class="input"><input type="email" class="qInput" name="email" id="email" pattern="(([a-z]+\.)?[a-z]+@ehu\.(eus|es)|[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es))$" required readonly value="<?php if(isset($_GET["email"])) echo clean_form_data($_GET["email"]); ?>"/></td>
+              <td class="input"><input type="email" class="qInput" name="email" id="email" pattern="(([a-z]+\.)?[a-z]+@ehu\.(eus|es)|[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es))$" required readonly value="<?php if(isset($_SESSION["email"])) echo $_SESSION["email"]; ?>"/></td>
             </tr>
             <tr>
               <td class="label"><label for="qst">Pregunta: </label></td>
