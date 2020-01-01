@@ -35,17 +35,19 @@ if (!(isset($_SESSION["email"]) && isset($_SESSION["nombre"]) && isset($_SESSION
       if ($result->num_rows > 0) {
         echo "<table id='data'><caption style'font-weight:bold;' >Lista de preguntas</caption><thead><tr><th>Elegir</th><th>Correo</th><th>Contraseña</th><th>Imagen</th><th>Estado actual de la cuenta</th></tr></thead><tbody>";
         while($row = $result->fetch_assoc()) {
-          $imagen = "";
-          if (!empty($row["Imagen"])){
-            $imagen = "<img src='../images/" . addslashes($row["Imagen"]) . "' alt='" . addslashes($row["Tema"]) . "' style='display:block;' width='100%' onclick='clickImage(". "\"" . addslashes($row["Imagen"]) . "\"," . "\"" . addslashes($row["Tema"]) . "\"" . ")'/>";
+          if ($row["Rol"] != 1){
+            $imagen = "";
+            if (!empty($row["Imagen"])){
+              $imagen = "<img src='../images/" . addslashes($row["Imagen"]) . "' alt='" . addslashes($row["Tema"]) . "' style='display:block;' width='100%' onclick='clickImage(". "\"" . addslashes($row["Imagen"]) . "\"," . "\"" . addslashes($row["Tema"]) . "\"" . ")'/>";
+            }
+            $estado = ($row["Estado"] == 0) ? "Cuenta bloqueada" : "Cuenta activa";
+            echo "<tr><td><span>" .
+            "<input type='checkbox' class='userSelector' value='" . $row["Correo"] . "'>" . "</span></td><td><span>" .
+            $row["Correo"] . "</span></td><td><span>" .
+            $row["Contrasena"] . "</span></td><td><span>" .
+            $imagen . "</span></td><td><span>" .
+            $estado . "</span></td></tr>";
           }
-          $estado = ($row["Estado"] == 0) ? "Cuenta bloqueada" : "Cuenta activa";
-          echo "<tr><td><span>" .
-          "<input type='checkbox' class='userSelector' value='" . $row["Correo"] . "'>" . "</span></td><td><span>" .
-          $row["Correo"] . "</span></td><td><span>" .
-          $row["Contrasena"] . "</span></td><td><span>" .
-          $imagen . "</span></td><td><span>" .
-          $estado . "</span></td></tr>";
         }
         echo "</tbody></table>";
       } else {

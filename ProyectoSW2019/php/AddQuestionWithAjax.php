@@ -11,8 +11,6 @@
 			<?php
         //Definition of the mySQL connection properties are included
         include '../php/DbConfig.php';
-        if(empty($_GET["email"])) echo "<script>window.location.replace('" . $url_path . "php/Layout.php');</script>";
-
         /*
         echo $_POST['email'] . " <br>";
         echo $_POST['question'] . " <br>";

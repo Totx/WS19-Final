@@ -11,10 +11,10 @@ include '../php/SessionStart.php';
   <section class="main" id="s1">
     <div>
 
-      <table align="center" >
+      <table align="center" style="table-layout:fixed">
         <tr>
-          <th colspan=2>
-            <h2>DATOS DE LOS AUTORES</h2>
+          <th>
+            <h2>DATOS DEL AUTOR</h2>
           </th>
         </tr>
         <tr>
@@ -23,12 +23,6 @@ include '../php/SessionStart.php';
             <p>Especialidad en computación</p>
             <img src="../images/ULizarraldeS.jpg" alt="Unai not found" style="width:95%;height:95%;">
             <p>Correo: <a href="mailto:ulizarralde004@ikasle.ehu.eus">ulizarralde004@ikasle.ehu.eus</a></p>
-          </td>
-          <td>
-            <p>Julian Nafarrate</p>
-            <p>Especialidad en computación</p>
-            <img src="../images/JNafarrateS.png" alt="Julian not found" style="width:65%;height:65%;">
-            <p>Correo: <a href="mailto:jnafarrate002@ikasle.ehu.eus">jnafarrate002@ikasle.ehu.eus</a></p>
           </td>
         </tr>
       </table>
