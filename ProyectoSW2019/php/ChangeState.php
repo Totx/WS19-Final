@@ -27,13 +27,14 @@ if ($result = $conn->query($sql_query)){
   while($row = $result->fetch_assoc()){
     $all_users[] = $row['Correo'];
     $all_states[] = $row['Estado'];
+    $all_roles[] = $row['Rol'];
   }
   //print_r($all_users);
   //print_r($all_states);
   $invalid = false;
   foreach($json['usuarios'] as $validCorreo){
-    if(in_array($validCorreo, $all_users)){
-      $posi = array_search($validCorreo, $all_users);
+    $posi = array_search($validCorreo, $all_users);
+    if($posi && $all_roles[$posi] != 1){
       $requested_states[] = $all_states[$posi];
     } else {
       $invalid = true;
