@@ -109,7 +109,7 @@
             </tr>
             <tr>
               <td class="label"><label for="pass">Nueva contraseña: </label></td>
-              <td class="input"><input type="password" class="qInput" name="password" id="pass" required/></td>
+              <td class="input"><input type="password" class="qInput" name="password" id="pass" required/><br><span id="passWService"></span></td>
               <td><span class="spanSingUp" id="spass"><?php if(!empty($required["spass"])) echo $required["spass"]; ?></span></td>
             </tr>
             <tr>
@@ -128,5 +128,7 @@
       <span style="color:red"><?php echo $error; ?></span>
     </div>
   </section>
+  <?php include '../html/Footer.html' ?>
+  <script src='../js/WebServiceSignUp.js'></script>
 </body>
 </html>

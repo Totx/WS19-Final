@@ -42,6 +42,7 @@ if (!(isset($_SESSION["email"]) && isset($_SESSION["nombre"]) && isset($_SESSION
       <span style="font-weight:bold">Barra de progreso de la petición para insertar pregunta</span>
       <div id="upload-progress"><div class="progress-bar"></div></div>
       <div class="quest" name="question" id="qst"></div>
+      <input type="email" class="qInput" name="email" id="email" pattern="(([a-z]+\.)?[a-z]+@ehu\.(eus|es)|[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es))$" hidden value="<?php if(isset($_SESSION["email"])) echo $_SESSION["email"]; ?>"/>
     </div>
   </section>
   <?php include '../html/Footer.html' ?>

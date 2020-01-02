@@ -19,10 +19,12 @@
   <section class="main" id="s1">
     <div>
       <?php
+        /*
         if (isset($_SESSION['email_recovery'])){
           echo $_SESSION['email_recovery'];
           echo $_SESSION['code'];
         }
+        */
         $error = "";
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
           if(!empty($_POST["email"])){
@@ -46,7 +48,7 @@
                     <body>
                       <h1>RESTABLECER SU CONTRASEÑA</h1>
                       <h2>Restablezca su contraseña en el siguiente enlace</h2>
-                      <h3><a href="ChangePassword?email=' . $email . '">Enlace a la pagina de recuperación de contraseña</a></h3>
+                      <h3><a href="https://ws19g14.000webhostapp.com/ProyectoSW2019/php/ChangePassword.php?email=' . $email . '">Enlace a la pagina de recuperación de contraseña</a></h3>
                       <h2>Código de recuperación</h2>
                       <h3>' . $codigo . '</h3>
                     </body>
@@ -93,5 +95,6 @@
     </div>
   </section>
 
+  <?php include '../html/Footer.html' ?>
 </body>
 </html>
