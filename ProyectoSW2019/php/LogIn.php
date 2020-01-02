@@ -87,9 +87,15 @@
                 <input type="submit" name="send" value="Login" />
               </td>
             </tr>
+            <tr>
+              <td colspan="2">
+                <span>¿Quieres restablecer tu contraseña? Hazlo <a href='RecoverPassword.php'>aquí</a></span>
+              </td>
+            </tr>
           </table>
         </fieldset>
       </form>
+
       <?php echo $mistake; ?>
     </div>
   </section>
