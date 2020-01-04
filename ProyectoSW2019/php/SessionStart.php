@@ -1,6 +1,9 @@
 <?php
   //ini_set('session.cookie_lifetime','60');
   session_start();
+  if (isset($_SESSION['topic'])){
+    unset($_SESSION['topic']);
+  }
   /*
   if (isset($_SESSION['email'])){
     echo $_SESSION['email'] . "\n";

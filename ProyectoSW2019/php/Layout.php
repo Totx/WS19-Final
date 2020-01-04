@@ -5,6 +5,7 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
+  <link rel="stylesheet" type='text/css' href="../styles/QuestionTable.css">
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
@@ -12,7 +13,10 @@
     <div>
 
       <h2>Quiz: el juego de las preguntas</h2>
-      <img style="align:center" src="../images/quiz-logo.jpg" alt="Quiz">
+      <!--<img style="align:center" src="../images/quiz-logo.jpg" alt="Quiz">-->
+      <?php
+        include "../php/TopTenQuizers.php";
+      ?>
 
     </div>
   </section>

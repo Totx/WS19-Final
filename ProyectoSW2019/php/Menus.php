@@ -45,6 +45,8 @@ if ($registrado == "Registrado" && $_SESSION['role']==1){
     echo "<span><a href='ObtenerPregunta.php'>Obtener pregunta</a></span>";
   } else if ($registrado == "Registrado" && $admin){
     echo "<span><a href='HandlingAccounts.php'>Gestionar usuarios</a></span>";
+  } else if ($registrado == "Visitante"){
+    echo "<span><a href='StartGame.php'>Empezar a jugar</a></span>";
   }
   echo "<span><a href='Credits.php'>Creditos</a></span>";
 
