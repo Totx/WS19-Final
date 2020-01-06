@@ -63,7 +63,9 @@
 <html>
 <head>
   <?php include '../html/Head.html'?>
+  <meta name="google-signin-scope" content="profile email">
   <script src='../js/jquery-3.4.1.min.js'></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
@@ -92,6 +94,10 @@
                 <span>¿Quieres restablecer tu contraseña? Hazlo <a href='RecoverPassword.php'>aquí</a></span>
               </td>
             </tr>
+            <tr>
+              <td><span>¿Tienes una cuenta de Google?</span></td>
+              <td><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></td>
+            </tr>
           </table>
         </fieldset>
       </form>
@@ -99,6 +105,7 @@
       <?php echo $mistake; ?>
     </div>
   </section>
-
+  <?php include '../html/Footer.html' ?>
+  <script src='../js/GetProfileInformation.js'></script>
 </body>
 </html>

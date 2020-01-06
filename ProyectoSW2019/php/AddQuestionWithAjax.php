@@ -29,11 +29,14 @@
             $email = clean_form_data($_POST["email"]);
             $expAlumnos = "/^[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es)$/";
             $expProfesores = "/([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/";
+            $values["email"] = $email;
+            /*
             if (preg_match("/^[a-z]{2,}[0-9]{3}@ikasle\.ehu\.(eus|es)$/", $email) || preg_match("/([a-z]+\.)?[a-z]+@ehu\.(eus|es)$/", $email)){
               $values["email"] = $email;
             } else {
               $required[] = "El correo proporcionado no cumple con los requisitos";
             }
+            */
           } else {
             $required[] = "Correo no proporcionado";
           }

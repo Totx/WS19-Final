@@ -25,7 +25,7 @@ if (!empty($nick)){
       $nick = $row["Nick"];
       $correct = $row["Aciertos"] + $_SESSION["correctas"];
       $mistakes = $row["Fallos"] + $_SESSION["erroneas"];
-      $score = $row["Puntuacion"] + ($_SESSION["correctas"] - intval(0.5*$_SESSION["erroneas"]));
+      $score = ($correct - intval(0.5*$mistakes));
       if($sql_query = $conn->prepare("UPDATE nicknames SET Aciertos=?, Fallos=?, Puntuacion=? WHERE Nick=?")){
         $sql_query->bind_param("iiis", $correct, $mistakes, $score, $nick);
         $sql_query->execute();

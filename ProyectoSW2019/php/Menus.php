@@ -20,10 +20,24 @@ if ($registrado == "Registrado" && $_SESSION['role']==1){
   }
 
   if($registrado == "Registrado"){
-    echo "<span class='right' style='padding-right:10px'><a href='LogOut.php'>Logout</a></span>";
+    echo "<span class='right' style='padding-right:10px'><a href='LogOut.php' onclick='signOut();'>Logout</a></span>";
+    echo "<script>";
+    echo "function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut();
+          }";
+    echo "function onLoad(){
+            gapi.load('auth2', function() {
+              gapi.auth2.init();
+            });
+          }";
+    echo "</script>";
+    echo "<script src='https://apis.google.com/js/platform.js?onload=onLoad' async defer></script>";
     echo '<span class="right" style="padding-right:10px">' . $_SESSION["email"] . '</span>';
     if (!empty($_SESSION["image"])){
       $imagen = "<img src='../images/" . $_SESSION["image"] . "' alt='Foto de perfil' style='display:inline;max-height:100px;' />";
+    } else if (!empty($_SESSION["image_external"])) {
+      $imagen = "<img src='" . $_SESSION["image_external"] . "' alt='Foto de perfil' style='display:inline;max-height:100px;' />";
     } else {
       $imagen = "<img src='../images/anonimo.jpeg' alt='Foto de perfil' style='display:inline;max-height:100px;'/>";
     }
